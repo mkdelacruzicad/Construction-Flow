@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'screens/role_selection_screen.dart';
-import 'screens/procurement/procurement_dashboard.dart';
-import 'screens/procurement/create_rfq_screen.dart';
-import 'screens/supplier/supplier_dashboard.dart';
-import 'screens/supplier/marketplace_screen.dart';
-import 'screens/supplier/rfq_details_screen.dart';
-import 'screens/supplier/quote_submission_screen.dart';
-import 'screens/warehouse/warehouse_dashboard.dart';
-import 'screens/warehouse/receive_goods_screen.dart';
-import 'screens/warehouse/inventory_screen.dart';
-import 'screens/warehouse/transfer_stock_screen.dart';
-import 'screens/warehouse/cycle_count_screen.dart';
-import 'screens/warehouse/dispatch_screen.dart';
-import 'screens/warehouse/putaway_screen.dart';
-import 'screens/account/account_info_screen.dart';
-import 'screens/auth/login_screen.dart';
+import 'package:siteflow/screens/role_selection_screen.dart';
+import 'package:siteflow/screens/procurement/procurement_dashboard.dart';
+import 'package:siteflow/screens/procurement/create_rfq_screen.dart';
+import 'package:siteflow/screens/supplier/supplier_dashboard.dart';
+import 'package:siteflow/screens/supplier/marketplace_screen.dart';
+import 'package:siteflow/screens/supplier/rfq_details_screen.dart';
+import 'package:siteflow/screens/supplier/quote_submission_screen.dart';
+import 'package:siteflow/screens/warehouse/warehouse_dashboard.dart';
+import 'package:siteflow/screens/warehouse/receive_goods_screen.dart';
+import 'package:siteflow/screens/warehouse/inventory_screen.dart';
+import 'package:siteflow/screens/warehouse/transfer_stock_screen.dart';
+import 'package:siteflow/screens/warehouse/cycle_count_screen.dart';
+import 'package:siteflow/screens/warehouse/dispatch_screen.dart';
+import 'package:siteflow/screens/warehouse/putaway_screen.dart';
+import 'package:siteflow/screens/account/account_info_screen.dart';
+import 'package:siteflow/screens/auth/login_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
