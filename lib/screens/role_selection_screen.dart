@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme.dart';
 
-
 class RoleSelectionScreen extends StatelessWidget {
   const RoleSelectionScreen({super.key});
 
@@ -18,11 +17,6 @@ class RoleSelectionScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Icon(
-                  Icons.construction,
-                  size: 64,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
                 const SizedBox(height: 24),
                 Text(
                   'ConstructFlow',
@@ -36,7 +30,10 @@ class RoleSelectionScreen extends StatelessWidget {
                 Text(
                   'Select your role to continue',
                   style: context.textStyles.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.75),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onPrimary
+                        .withValues(alpha: 0.75),
                   ),
                   textAlign: TextAlign.center,
                 ),
