@@ -21,7 +21,7 @@ class SupplierDashboard extends StatelessWidget {
             title: const Text('Supplier Portal'),
             actions: [
               IconButton(icon: const Icon(Icons.notifications_outlined), onPressed: () {}),
-              IconButton(icon: const Icon(Icons.account_circle), onPressed: () {}),
+              IconButton(icon: const Icon(Icons.account_circle), onPressed: () => context.push('/account')),
             ],
           ),
           body: SingleChildScrollView(

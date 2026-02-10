@@ -20,16 +20,16 @@ class RoleSelectionScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Icon(
+                Icon(
                   Icons.construction,
                   size: 64,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 const SizedBox(height: 24),
                 Text(
                   'ConstructFlow',
                   style: context.textStyles.displaySmall?.copyWith(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -38,7 +38,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 Text(
                   'Select your role to continue',
                   style: context.textStyles.bodyLarge?.copyWith(
-                    color: Colors.white70,
+                    color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.75),
                   ),
                   textAlign: TextAlign.center,
                 ),

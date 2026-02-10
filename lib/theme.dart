@@ -78,22 +78,22 @@ extension TextStyleExtensions on TextStyle {
 // COLORS
 // =============================================================================
 
-/// Modern, professional color palette for Construction & Logistics
+/// Light theme palette: fresh, clean light‑green UI
 class LightModeColors {
-  // Primary: deep navy/slate blue - Professional & Trustworthy
-  static const lightPrimary = Color(0xFF0F2C59); 
+  // Primary: Emerald/Deep Green for strong actions and headers
+  static const lightPrimary = Color(0xFF2E7D32); // Green 800
   static const lightOnPrimary = Color(0xFFFFFFFF);
-  static const lightPrimaryContainer = Color(0xFFD6E3FF);
-  static const lightOnPrimaryContainer = Color(0xFF001B3D);
+  static const lightPrimaryContainer = Color(0xFFDFF5E1); // soft mint container
+  static const lightOnPrimaryContainer = Color(0xFF0B3D1A);
 
-  // Secondary: Safety Orange / Amber - Highlights & Calls to Action
-  static const lightSecondary = Color(0xFFE85D04);
+  // Secondary: Teal accent for complementary actions
+  static const lightSecondary = Color(0xFF26A69A); // Teal 600
   static const lightOnSecondary = Color(0xFFFFFFFF);
-  static const lightSecondaryContainer = Color(0xFFFFDBCA);
-  static const lightOnSecondaryContainer = Color(0xFF331200);
+  static const lightSecondaryContainer = Color(0xFFCCF2EE);
+  static const lightOnSecondaryContainer = Color(0xFF07423D);
 
-  // Tertiary: Industrial Grey/Teal
-  static const lightTertiary = Color(0xFF4C667B);
+  // Tertiary: Blue‑grey for neutral elements
+  static const lightTertiary = Color(0xFF607D8B);
   static const lightOnTertiary = Color(0xFFFFFFFF);
 
   // Error colors
@@ -102,36 +102,36 @@ class LightModeColors {
   static const lightErrorContainer = Color(0xFFFFDAD6);
   static const lightOnErrorContainer = Color(0xFF410002);
 
-  // Surface and background
-  static const lightSurface = Color(0xFFF8F9FA); // Clean white-grey
-  static const lightOnSurface = Color(0xFF191C20);
-  static const lightBackground = Color(0xFFF3F4F6);
-  static const lightSurfaceVariant = Color(0xFFE0E2EC);
-  static const lightOnSurfaceVariant = Color(0xFF43474E);
+  // Surfaces: crisp whites with a hint of green tint for sections
+  static const lightSurface = Color(0xFFFAFAFA);
+  static const lightOnSurface = Color(0xFF1B1F23);
+  static const lightBackground = Color(0xFFF6FBF7); // very light minty background
+  static const lightSurfaceVariant = Color(0xFFE5F2E8); // subtle greenish variant
+  static const lightOnSurfaceVariant = Color(0xFF4A4F55);
 
   // Outline and shadow
-  static const lightOutline = Color(0xFF73777F);
+  static const lightOutline = Color(0xFF9E9E9E);
   static const lightShadow = Color(0xFF000000);
-  static const lightInversePrimary = Color(0xFFAAC7FF);
+  static const lightInversePrimary = Color(0xFFA5D6A7); // light green 200
 }
 
-/// Dark mode colors
+/// Dark mode colors tuned to a muted green accent
 class DarkModeColors {
-  // Primary: Lighter slate blue
-  static const darkPrimary = Color(0xFFAAC7FF);
-  static const darkOnPrimary = Color(0xFF002F65);
-  static const darkPrimaryContainer = Color(0xFF00458E);
-  static const darkOnPrimaryContainer = Color(0xFFD6E3FF);
+  // Primary: desaturated green for dark backgrounds
+  static const darkPrimary = Color(0xFFA5D6A7); // Light Green 200
+  static const darkOnPrimary = Color(0xFF073317);
+  static const darkPrimaryContainer = Color(0xFF1B5E20); // Green 900 container
+  static const darkOnPrimaryContainer = Color(0xFFC8E6C9);
 
-  // Secondary: Safety Orange (Lighter)
-  static const darkSecondary = Color(0xFFFFB598);
-  static const darkOnSecondary = Color(0xFF581E00);
-  static const darkSecondaryContainer = Color(0xFF7A2F00);
-  static const darkOnSecondaryContainer = Color(0xFFFFDBCA);
+  // Secondary: teal accent
+  static const darkSecondary = Color(0xFF80CBC4);
+  static const darkOnSecondary = Color(0xFF003730);
+  static const darkSecondaryContainer = Color(0xFF004D45);
+  static const darkOnSecondaryContainer = Color(0xFFB2DFDB);
 
-  // Tertiary
-  static const darkTertiary = Color(0xFFB3CAD5);
-  static const darkOnTertiary = Color(0xFF1E3341);
+  // Tertiary: blue‑grey
+  static const darkTertiary = Color(0xFFB0BEC5);
+  static const darkOnTertiary = Color(0xFF122029);
 
   // Error colors
   static const darkError = Color(0xFFFFB4AB);
@@ -140,15 +140,15 @@ class DarkModeColors {
   static const darkOnErrorContainer = Color(0xFFFFDAD6);
 
   // Surface and background
-  static const darkSurface = Color(0xFF191C20);
-  static const darkOnSurface = Color(0xFFE2E2E6);
-  static const darkSurfaceVariant = Color(0xFF43474E);
-  static const darkOnSurfaceVariant = Color(0xFFC3C7CF);
+  static const darkSurface = Color(0xFF111417);
+  static const darkOnSurface = Color(0xFFE2E5E8);
+  static const darkSurfaceVariant = Color(0xFF2A2F33);
+  static const darkOnSurfaceVariant = Color(0xFFB6BBC0);
 
   // Outline and shadow
-  static const darkOutline = Color(0xFF8D9199);
+  static const darkOutline = Color(0xFF7C8690);
   static const darkShadow = Color(0xFF000000);
-  static const darkInversePrimary = Color(0xFF0F2C59);
+  static const darkInversePrimary = Color(0xFF2E7D32);
 }
 
 /// Font size constants
@@ -213,7 +213,7 @@ ThemeData get lightTheme => ThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
       side: BorderSide(
-        color: LightModeColors.lightOutline.withValues(alpha: 0.1),
+        color: LightModeColors.lightOutline.withValues(alpha: 0.15),
         width: 1,
       ),
     ),
@@ -283,11 +283,11 @@ ThemeData get darkTheme => ThemeData(
         width: 1,
       ),
     ),
-    color: Color(0xFF252A32),
+    color: Color(0xFF1A1F1C),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: Color(0xFF252A32),
+    fillColor: Color(0xFF1A1F1C),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide.none,

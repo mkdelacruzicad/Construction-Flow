@@ -27,7 +27,7 @@ class ProcurementDashboard extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.account_circle),
-                onPressed: () {},
+                onPressed: () => context.push('/account'),
               ),
             ],
           ),
@@ -82,7 +82,7 @@ class ProcurementDashboard extends StatelessWidget {
           child: _StatCard(
             title: 'Active RFQs',
             value: activeCount.toString(),
-            color: Colors.blue,
+            color: Theme.of(context).colorScheme.primary,
             icon: Icons.assignment,
           ),
         ),
@@ -91,7 +91,7 @@ class ProcurementDashboard extends StatelessWidget {
           child: _StatCard(
             title: 'Awarded',
             value: awardedCount.toString(),
-            color: Colors.green,
+            color: Theme.of(context).colorScheme.secondary,
             icon: Icons.check_circle,
           ),
         ),
@@ -100,7 +100,7 @@ class ProcurementDashboard extends StatelessWidget {
           child: _StatCard(
             title: 'Pending POs',
             value: '0',
-            color: Colors.orange,
+            color: Theme.of(context).colorScheme.tertiary,
             icon: Icons.pending_actions,
           ),
         ),
@@ -130,12 +130,12 @@ class ProcurementDashboard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.blue.withValues(alpha: 0.1),
+                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
                     rfq.status.name.toUpperCase(),
-                    style: context.textStyles.labelSmall?.copyWith(color: Colors.blue),
+                    style: context.textStyles.labelSmall?.copyWith(color: Theme.of(context).colorScheme.primary),
                   ),
                 ),
               ],
@@ -143,16 +143,16 @@ class ProcurementDashboard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Project: ${rfq.projectId}',
-              style: context.textStyles.bodyMedium?.copyWith(color: Colors.grey[600]),
+              style: context.textStyles.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.calendar_today, size: 14, color: Colors.grey[500]),
+                Icon(Icons.calendar_today, size: 14, color: Theme.of(context).colorScheme.onSurfaceVariant),
                 const SizedBox(width: 4),
                 Text(
                   'Deadline: ${DateFormat('MMM d, yyyy').format(rfq.deadline)}',
-                  style: context.textStyles.bodySmall?.copyWith(color: Colors.grey[600]),
+                  style: context.textStyles.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
                 ),
                 const Spacer(),
                 Text(
@@ -172,15 +172,18 @@ class ProcurementDashboard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        color: Colors.grey.withValues(alpha: 0.05),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.35),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.15)),
       ),
       child: Column(
         children: [
-          Icon(Icons.inbox, size: 48, color: Colors.grey[400]),
+          Icon(Icons.inbox, size: 48, color: Theme.of(context).colorScheme.onSurfaceVariant),
           const SizedBox(height: 16),
-          Text(message, style: TextStyle(color: Colors.grey[600])),
+          Text(
+            message,
+            style: context.textStyles.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+          ),
         ],
       ),
     );
@@ -205,12 +208,12 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.12)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.03),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -235,7 +238,7 @@ class _StatCard extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             title,
-            style: context.textStyles.bodySmall?.copyWith(color: Colors.grey[600]),
+            style: context.textStyles.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
           ),
         ],
       ),

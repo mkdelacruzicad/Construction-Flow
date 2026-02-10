@@ -87,6 +87,11 @@ class MockDataService extends ChangeNotifier {
     notifyListeners();
   }
 
+  void logout() {
+    _currentUser = null;
+    notifyListeners();
+  }
+
   void createRFQ(String title, String projectId, DateTime deadline, List<RFQItem> items) {
     final rfq = RFQ(
       id: _uuid.v4(),

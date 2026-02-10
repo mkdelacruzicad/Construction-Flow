@@ -21,6 +21,7 @@ class WarehouseDashboard extends StatelessWidget {
             title: const Text('Warehouse Operations'),
             actions: [
               IconButton(icon: const Icon(Icons.qr_code_scanner), onPressed: () {}),
+              IconButton(icon: const Icon(Icons.account_circle), onPressed: () => context.push('/account')),
             ],
           ),
           body: SingleChildScrollView(

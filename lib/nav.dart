@@ -14,6 +14,7 @@ import 'screens/warehouse/transfer_stock_screen.dart';
 import 'screens/warehouse/cycle_count_screen.dart';
 import 'screens/warehouse/dispatch_screen.dart';
 import 'screens/warehouse/putaway_screen.dart';
+import 'screens/account/account_info_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -22,6 +23,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.home,
         builder: (context, state) => const RoleSelectionScreen(),
+      ),
+      GoRoute(
+        path: '/account',
+        builder: (context, state) => const AccountInfoScreen(),
       ),
       
       // Procurement Routes
