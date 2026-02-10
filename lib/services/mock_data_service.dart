@@ -7,9 +7,9 @@ class MockDataService extends ChangeNotifier {
 
   // --- Mock Data ---
   final List<User> _users = [
-    User(id: 'u1', name: 'John Doe', email: 'john@construct.com', role: UserRole.procurement),
-    User(id: 'u2', name: 'BuildSupply Co.', email: 'sales@buildsupply.com', role: UserRole.supplier, companyName: 'BuildSupply Co.'),
-    User(id: 'u3', name: 'Warehouser Mike', email: 'mike@construct.com', role: UserRole.warehouse),
+    User(id: 'u1', name: 'John Doe', email: 'cave.test@gmail.com', role: UserRole.procurement),
+    User(id: 'u2', name: 'BuildSupply Co.', email: 'cave.test@gmail.com', role: UserRole.supplier, companyName: 'BuildSupply Co.'),
+    User(id: 'u3', name: 'Warehouser Mike', email: 'cave.test@gmail.com', role: UserRole.warehouse),
   ];
 
   // Simple in-memory credentials (email -> password)
