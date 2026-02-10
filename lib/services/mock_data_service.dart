@@ -7,16 +7,16 @@ class MockDataService extends ChangeNotifier {
 
   // --- Mock Data ---
   final List<User> _users = [
-    User(id: 'u1', name: 'John Doe', email: 'cave.test@gmail.com', role: UserRole.procurement),
-    User(id: 'u2', name: 'BuildSupply Co.', email: 'cave.test@gmail.com', role: UserRole.supplier, companyName: 'BuildSupply Co.'),
-    User(id: 'u3', name: 'Warehouser Mike', email: 'cave.test@gmail.com', role: UserRole.warehouse),
+    User(id: 'u1', name: 'John Doe', email: 'cave.test1@gmail.com', role: UserRole.procurement),
+    User(id: 'u2', name: 'BuildSupply Co.', email: 'cave.test2@gmail.com', role: UserRole.supplier, companyName: 'BuildSupply Co.'),
+    User(id: 'u3', name: 'Warehouser Mike', email: 'cave.test@3gmail.com', role: UserRole.warehouse),
   ];
 
   // Simple in-memory credentials (email -> password)
   final Map<String, String> _passwords = {
-    'john@construct.com': 'password123',
-    'sales@buildsupply.com': 'password123',
-    'mike@construct.com': 'password123',
+    'cave.test1@gmail.com': 'password123',
+    'cave.test2@gmail.com': 'password123',
+    'cave.test3@gmail.com': 'password123',
   };
 
   final List<Item> _items = [
