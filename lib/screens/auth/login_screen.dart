@@ -106,12 +106,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 12),
-                  Text(
-                    'Tip: use password "password123" with a mock email for the role.',
-                    style: ts.labelSmall?.copyWith(color: cs.onSurfaceVariant),
-                    textAlign: TextAlign.center,
-                  ),
+                  // const SizedBox(height: 12),
+                  // Text(
+                  //   'Tip: use password "password123" with a mock email for the role.',
+                  //   style: ts.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                  //   textAlign: TextAlign.center,
+                  // ),
                 ],
               ),
             ),
