@@ -15,6 +15,7 @@ import 'screens/warehouse/cycle_count_screen.dart';
 import 'screens/warehouse/dispatch_screen.dart';
 import 'screens/warehouse/putaway_screen.dart';
 import 'screens/account/account_info_screen.dart';
+import 'screens/auth/login_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -27,6 +28,13 @@ class AppRouter {
       GoRoute(
         path: '/account',
         builder: (context, state) => const AccountInfoScreen(),
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) {
+          final roleParam = state.uri.queryParameters['role'] ?? '';
+          return LoginScreen(roleParam: roleParam);
+        },
       ),
       
       // Procurement Routes

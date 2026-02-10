@@ -12,6 +12,13 @@ class MockDataService extends ChangeNotifier {
     User(id: 'u3', name: 'Warehouser Mike', email: 'mike@construct.com', role: UserRole.warehouse),
   ];
 
+  // Simple in-memory credentials (email -> password)
+  final Map<String, String> _passwords = {
+    'john@construct.com': 'password123',
+    'sales@buildsupply.com': 'password123',
+    'mike@construct.com': 'password123',
+  };
+
   final List<Item> _items = [
     Item(id: 'i1', code: 'CEM-001', name: 'Portland Cement (50kg)', description: 'High quality Portland cement for general use', unit: 'bag', category: 'Raw Materials', imageUrl: 'https://placehold.co/100x100?text=Cement'),
     Item(id: 'i2', code: 'STL-Bar-12', name: 'Steel Rebar 12mm', description: 'Deformed steel reinforcement bar', unit: 'ton', category: 'Steel', imageUrl: 'https://placehold.co/100x100?text=Steel'),
@@ -85,6 +92,23 @@ class MockDataService extends ChangeNotifier {
   void login(UserRole role) {
     _currentUser = _users.firstWhere((u) => u.role == role);
     notifyListeners();
+  }
+
+  /// Email/password login constrained by role. Returns true if success.
+  bool loginWithEmail({required String email, required String password, required UserRole role}) {
+    try {
+      final user = _users.firstWhere((u) => u.email.toLowerCase() == email.toLowerCase() && u.role == role);
+      final expected = _passwords[email.toLowerCase()];
+      if (expected != null && expected == password) {
+        _currentUser = user;
+        notifyListeners();
+        return true;
+      }
+      return false;
+    } catch (e) {
+      debugPrint('loginWithEmail error: $e');
+      return false;
+    }
   }
 
   void logout() {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import '../theme.dart';
-import '../services/mock_data_service.dart';
-import '../models/data_models.dart';
+
 
 class RoleSelectionScreen extends StatelessWidget {
   const RoleSelectionScreen({super.key});
@@ -48,8 +46,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   description: 'Manage RFQs, Purchase Orders, and Suppliers',
                   icon: Icons.assignment_ind,
                   onTap: () {
-                    context.read<MockDataService>().login(UserRole.procurement);
-                    context.go('/procurement');
+                    context.push('/login?role=procurement');
                   },
                 ),
                 const SizedBox(height: 16),
@@ -58,8 +55,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   description: 'Browse RFQs, Submit Quotes, Manage Catalog',
                   icon: Icons.storefront,
                   onTap: () {
-                    context.read<MockDataService>().login(UserRole.supplier);
-                    context.go('/supplier');
+                    context.push('/login?role=supplier');
                   },
                 ),
                 const SizedBox(height: 16),
@@ -68,8 +64,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   description: 'Track Inventory, Receive Goods, Dispatch',
                   icon: Icons.warehouse,
                   onTap: () {
-                    context.read<MockDataService>().login(UserRole.warehouse);
-                    context.go('/warehouse');
+                    context.push('/login?role=warehouse');
                   },
                 ),
               ],
