@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
 
         // Use context.go() or context.push() to navigate to the routes.
-        routerConfig: AppRouter.router,
+        routerConfig: AppRouter.createRouter(context.read<AppState>()),
       ),
     );
   }

@@ -46,6 +46,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     setState(()=> _loading = true);
     await Future<void>.delayed(const Duration(milliseconds: 500));
     if(!mounted) return;
-    context.go('/auth/reset-password');
+    context.go('/auth/verify-otp?next=%2Fauth%2Freset-password');
   }
 }

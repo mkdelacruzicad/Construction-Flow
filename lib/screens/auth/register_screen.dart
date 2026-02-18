@@ -108,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         role: _role,
       );
       if(!mounted) return;
-      context.go('/org/company/select');
+      context.go('/auth/verify-otp?next=%2Forg%2Fcompany%2Fselect');
     } catch (e) {
       debugPrint('Register error: $e');
       if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration failed')));

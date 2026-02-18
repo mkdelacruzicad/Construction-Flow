@@ -44,7 +44,7 @@ class ProcurementDashboard extends StatelessWidget {
                   children: [
                     Text('Active RFQs', style: context.textStyles.titleLarge?.bold),
                     TextButton.icon(
-                      onPressed: () => context.push('/procurement/rfq/create'),
+                      onPressed: () => context.push('/procurement-shell/rfq/create'),
                       icon: const Icon(Icons.add),
                       label: const Text('New RFQ'),
                     ),
@@ -66,7 +66,7 @@ class ProcurementDashboard extends StatelessWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => context.push('/procurement/rfq/create'),
+            onPressed: () => context.push('/procurement-shell/rfq/create'),
             icon: const Icon(Icons.add),
             label: const Text('Create RFQ'),
           ),

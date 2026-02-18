@@ -28,7 +28,7 @@ class MarketplaceScreen extends StatelessWidget {
                   title: Text(rfq.title, style: context.textStyles.titleMedium?.bold),
                   subtitle: Text('Deadline: ${DateFormat('yyyy-MM-dd').format(rfq.deadline)} • ${rfq.items.length} items'),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                  onTap: () => context.push('/supplier/rfq/${rfq.id}'),
+                  onTap: () => context.push('/supplier-shell/rfq/${rfq.id}'),
                 ),
               );
             },

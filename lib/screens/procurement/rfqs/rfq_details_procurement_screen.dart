@@ -10,9 +10,9 @@ class RFQDetailsProcurementScreen extends StatelessWidget {
     final ts = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(title: Text('RFQ $rfqId', style: ts.titleLarge), actions: [
-        IconButton(onPressed: ()=> context.push('/procurement/rfqs/$rfqId/invite'), icon: const Icon(Icons.group_add)),
-        IconButton(onPressed: ()=> context.push('/procurement/rfqs/$rfqId/submissions'), icon: const Icon(Icons.inbox)),
-        IconButton(onPressed: ()=> context.push('/procurement/rfqs/$rfqId/compare'), icon: const Icon(Icons.table_chart)),
+        IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/invite'), icon: const Icon(Icons.group_add)),
+        IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/submissions'), icon: const Icon(Icons.inbox)),
+        IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/compare'), icon: const Icon(Icons.table_chart)),
       ]),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -39,7 +39,7 @@ class RFQDetailsProcurementScreen extends StatelessWidget {
           const SizedBox(width: 8),
           OutlinedButton(onPressed: (){}, child: const Text('Close')),
           const Spacer(),
-          FilledButton.tonal(onPressed: ()=> context.push('/procurement/rfqs/$rfqId/create-po'), child: const Text('Create PO')),
+          FilledButton.tonal(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/create-po'), child: const Text('Create PO')),
         ]),
       ),
     );

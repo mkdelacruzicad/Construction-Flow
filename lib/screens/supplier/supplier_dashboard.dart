@@ -51,7 +51,7 @@ class SupplierDashboard extends StatelessWidget {
                   children: [
                     Text('New Opportunities', style: context.textStyles.titleLarge?.bold),
                     TextButton(
-                      onPressed: () => context.push('/supplier/marketplace'),
+                      onPressed: () => context.push('/supplier-shell/marketplace'),
                       child: const Text('View All'),
                     ),
                   ],
@@ -175,7 +175,7 @@ class _OpportunityCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
-        onTap: () => context.push('/supplier/rfq/${rfq.id}'),
+        onTap: () => context.push('/supplier-shell/rfq/${rfq.id}'),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -228,7 +228,7 @@ class _OpportunityCard extends StatelessWidget {
                     style: context.textStyles.bodySmall?.copyWith(color: Colors.red),
                   ),
                   TextButton(
-                    onPressed: () => context.push('/supplier/rfq/${rfq.id}'),
+                    onPressed: () => context.push('/supplier-shell/rfq/${rfq.id}'),
                     child: const Text('View Details'),
                   ),
                 ],

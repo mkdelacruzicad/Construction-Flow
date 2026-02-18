@@ -19,11 +19,11 @@ class CatalogListScreen extends StatelessWidget {
             leading: const Icon(Icons.inventory_2),
             title: Text(it['name'] as String),
             trailing: Text(it['price'] as String),
-            onTap: ()=> context.push('/supplier/catalog/${it['id']}'),
+            onTap: ()=> context.push('/supplier-shell/catalog/${it['id']}'),
           ));
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(onPressed: ()=> context.push('/supplier/catalog/new'), icon: const Icon(Icons.add), label: const Text('Add item')),
+      floatingActionButton: FloatingActionButton.extended(onPressed: ()=> context.push('/supplier-shell/catalog/new'), icon: const Icon(Icons.add), label: const Text('Add item')),
     );
   }
 }

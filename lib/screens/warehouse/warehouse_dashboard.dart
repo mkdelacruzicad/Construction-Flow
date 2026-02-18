@@ -64,12 +64,12 @@ class WarehouseDashboard extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 2.8,
                   children: [
-                    _ActionButton(label: 'Receive', icon: Icons.download_rounded, onTap: () => context.push('/warehouse/receive')),
-                    _ActionButton(label: 'Dispatch', icon: Icons.upload_rounded, onTap: () => context.push('/warehouse/dispatch')),
-                    _ActionButton(label: 'Inventory', icon: Icons.inventory_2_outlined, onTap: () => context.push('/warehouse/inventory')),
-                    _ActionButton(label: 'Transfer', icon: Icons.compare_arrows_rounded, onTap: () => context.push('/warehouse/transfer')),
-                    _ActionButton(label: 'Cycle Count', icon: Icons.fact_check_outlined, onTap: () => context.push('/warehouse/cycle-count')),
-                    _ActionButton(label: 'Putaway', icon: Icons.grid_view_outlined, onTap: () => context.push('/warehouse/putaway')),
+                    _ActionButton(label: 'Receive', icon: Icons.download_rounded, onTap: () => context.push('/warehouse-shell/receiving')),
+                    _ActionButton(label: 'Dispatch', icon: Icons.upload_rounded, onTap: () => context.push('/warehouse-shell/dispatch')),
+                    _ActionButton(label: 'Inventory', icon: Icons.inventory_2_outlined, onTap: () => context.push('/warehouse-shell/inventory')),
+                    _ActionButton(label: 'Transfer', icon: Icons.compare_arrows_rounded, onTap: () => context.push('/warehouse-shell/transfer')),
+                    _ActionButton(label: 'Cycle Count', icon: Icons.fact_check_outlined, onTap: () => context.push('/warehouse-shell/cycle-count')),
+                    _ActionButton(label: 'Putaway', icon: Icons.grid_view_outlined, onTap: () => context.push('/warehouse-shell/putaway')),
                   ],
                 ),
                 

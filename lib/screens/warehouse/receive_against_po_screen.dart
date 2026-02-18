@@ -23,7 +23,7 @@ class ReceiveAgainstPOScreen extends StatelessWidget {
       ]),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12),
-        child: FilledButton(onPressed: ()=> context.go('/warehouse/receiving/$poId/grn'), child: const Text('Generate GRN')),
+        child: FilledButton(onPressed: ()=> context.go('/warehouse-shell/receiving/$poId/grn'), child: const Text('Generate GRN')),
       ),
     );
   }

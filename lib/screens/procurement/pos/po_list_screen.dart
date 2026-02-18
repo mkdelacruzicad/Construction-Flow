@@ -20,7 +20,7 @@ class POListScreen extends StatelessWidget {
             title: Text(po['id'] as String),
             subtitle: Text(po['status'] as String),
             trailing: Text(po['amount'] as String),
-            onTap: ()=> context.push('/procurement/pos/${po['id']}'),
+            onTap: ()=> context.push('/procurement-shell/pos/${po['id']}'),
           ));
         },
       ),

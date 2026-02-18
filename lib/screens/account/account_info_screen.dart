@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:siteflow/models/data_models.dart';
 import 'package:siteflow/services/mock_data_service.dart';
+import 'package:siteflow/services/app_state.dart';
 import 'package:siteflow/nav.dart';
 import 'package:siteflow/theme.dart';
 
@@ -100,8 +101,10 @@ class AccountInfoScreen extends StatelessWidget {
                 foregroundColor: MaterialStatePropertyAll(scheme.onErrorContainer),
               ),
               onPressed: () {
+                // Clear domain session (if any) and app auth context
                 context.read<MockDataService>().logout();
-                context.go(AppRoutes.home);
+                context.read<AppState>().logout();
+                context.go('/auth/login');
               },
               icon: const Icon(Icons.logout),
               label: const Text('Logout'),

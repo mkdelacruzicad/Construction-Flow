@@ -41,7 +41,7 @@ class _RFQListScreenState extends State<RFQListScreen> with SingleTickerProvider
           child: TabBarView(controller: _tab, children: List.generate(4, (tabIdx) => _RFQList(tab: tabIdx))),
         ),
       ]),
-      floatingActionButton: FloatingActionButton.extended(onPressed: ()=> context.push('/procurement/rfq/create'), icon: const Icon(Icons.add), label: const Text('New RFQ')),
+      floatingActionButton: FloatingActionButton.extended(onPressed: ()=> context.push('/procurement-shell/rfq/create'), icon: const Icon(Icons.add), label: const Text('New RFQ')),
     );
   }
 }
@@ -64,7 +64,7 @@ class _RFQList extends StatelessWidget {
             title: Text(it['title'] as String),
             subtitle: Text('Due ${it['due']}'),
             trailing: Text(it['status'] as String),
-            onTap: () => context.push('/procurement/rfqs/${it['id']}'),
+            onTap: () => context.push('/procurement-shell/rfqs/${it['id']}'),
           ),
         );
       },

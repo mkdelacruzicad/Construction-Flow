@@ -36,7 +36,7 @@ class _AwardDecisionScreenState extends State<AwardDecisionScreen> {
           const SizedBox(height: 12),
           SwitchListTile(value: _needApproval, onChanged: (v)=> setState(()=> _needApproval = v), title: const Text('Require internal approval')),
           const Spacer(),
-          SizedBox(width: double.infinity, child: FilledButton(onPressed: _winner==null?null: ()=> context.go('/procurement/rfqs/${widget.rfqId}/create-po'), child: const Text('Proceed to PO'))),
+          SizedBox(width: double.infinity, child: FilledButton(onPressed: _winner==null?null: ()=> context.go('/procurement-shell/rfqs/${widget.rfqId}/create-po'), child: const Text('Proceed to PO'))),
         ]),
       ),
     );

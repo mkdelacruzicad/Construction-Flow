@@ -24,7 +24,7 @@ class InviteSummaryScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12),
-        child: FilledButton(onPressed: ()=> context.go('/procurement/rfqs/$rfqId/invite/success'), child: const Text('Send invites')),
+        child: FilledButton(onPressed: ()=> context.go('/procurement-shell/rfqs/$rfqId/invite/success'), child: const Text('Send invites')),
       ),
     );
   }

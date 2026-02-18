@@ -44,7 +44,7 @@ class _InviteVendorsScreenState extends State<InviteVendorsScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12),
         child: FilledButton(
-          onPressed: _selected.isEmpty? null : ()=> context.push('/procurement/rfqs/${widget.rfqId}/invite/summary', extra: _selected.toList()),
+          onPressed: _selected.isEmpty? null : ()=> context.push('/procurement-shell/rfqs/${widget.rfqId}/invite/summary', extra: _selected.toList()),
           child: Text('Next (${_selected.length})'),
         ),
       ),

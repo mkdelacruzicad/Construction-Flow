@@ -22,7 +22,7 @@ class RFQSubmissionsScreen extends StatelessWidget {
               title: Text(v['name'] as String),
               subtitle: Text(v['status'] as String),
               trailing: const Icon(Icons.chevron_right),
-              onTap: ()=> context.push('/procurement/rfqs/$rfqId/submissions/${v['id']}'),
+              onTap: ()=> context.push('/procurement-shell/rfqs/$rfqId/submissions/${v['id']}'),
             ),
           );
         },

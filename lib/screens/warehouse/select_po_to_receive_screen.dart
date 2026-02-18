@@ -19,7 +19,7 @@ class SelectPOToReceiveScreen extends StatelessWidget {
             title: Text(it['id'] as String),
             subtitle: Text('${it['vendor']} • ETA ${it['eta']}'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: ()=> context.push('/warehouse/receiving/${it['id']}'),
+            onTap: ()=> context.push('/warehouse-shell/receiving/${it['id']}'),
           ));
         },
       ),

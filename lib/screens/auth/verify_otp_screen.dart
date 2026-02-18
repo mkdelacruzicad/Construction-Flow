@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
-  const VerifyOtpScreen({super.key});
+  final String? nextPath;
+  const VerifyOtpScreen({super.key, this.nextPath});
 
   @override
   State<VerifyOtpScreen> createState() => _VerifyOtpScreenState();
@@ -65,6 +66,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     setState(()=> _loading = true);
     await Future<void>.delayed(const Duration(milliseconds: 500));
     if(!mounted) return;
-    context.go('/org/company/select');
+    final dest = widget.nextPath ?? '/org/company/select';
+    context.go(dest);
   }
 }

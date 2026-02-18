@@ -17,7 +17,7 @@ class InviteSuccessScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text('Invites sent successfully', style: ts.titleLarge),
           const SizedBox(height: 16),
-          FilledButton(onPressed: ()=> context.go('/procurement/rfqs/$rfqId'), child: const Text('Back to RFQ')),
+          FilledButton(onPressed: ()=> context.go('/procurement-shell/rfqs/$rfqId'), child: const Text('Back to RFQ')),
         ]),
       ),
     );

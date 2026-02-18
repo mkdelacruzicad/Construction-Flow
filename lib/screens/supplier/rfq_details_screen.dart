@@ -44,7 +44,7 @@ class RFQDetailsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => context.push('/supplier/rfq/$rfqId/quote'),
+                      onPressed: () => context.push('/supplier-shell/rfq/$rfqId/quote'),
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         backgroundColor: Theme.of(context).colorScheme.primary,
