@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:siteflow/services/app_state.dart';
 import 'package:siteflow/theme.dart';
 
 class RoleSelectionScreen extends StatelessWidget {
@@ -22,17 +24,66 @@ class RoleSelectionScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text('Select your role to continue', style: context.textStyles.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.75)), textAlign: TextAlign.center),
                 const SizedBox(height: 48),
-                _RoleCard(title: 'Procurement Officer', description: 'Manage RFQs, Purchase Orders, and Suppliers', icon: Icons.assignment_ind, onTap: () { context.push('/auth/login'); }),
+                _RoleCard(
+                  title: 'Procurement Officer',
+                  description: 'Manage RFQs, Purchase Orders, and Suppliers',
+                  icon: Icons.assignment_ind,
+                  onTap: () {
+                    _selectRole(context, 'procurement');
+                  },
+                ),
                 const SizedBox(height: 16),
-                _RoleCard(title: 'Supplier', description: 'Browse RFQs, Submit Quotes, Manage Catalog', icon: Icons.storefront, onTap: () { context.push('/auth/login'); }),
+                _RoleCard(
+                  title: 'Supplier',
+                  description: 'Browse RFQs, Submit Quotes, Manage Catalog',
+                  icon: Icons.storefront,
+                  onTap: () {
+                    _selectRole(context, 'supplier');
+                  },
+                ),
                 const SizedBox(height: 16),
-                _RoleCard(title: 'Warehouse Manager', description: 'Track Inventory, Receive Goods, Dispatch', icon: Icons.warehouse, onTap: () { context.push('/auth/login'); }),
+                _RoleCard(
+                  title: 'Warehouse Manager',
+                  description: 'Track Inventory, Receive Goods, Dispatch',
+                  icon: Icons.warehouse,
+                  onTap: () {
+                    _selectRole(context, 'warehouse');
+                  },
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _selectRole(BuildContext context, String role) {
+    final app = context.read<AppState>();
+    app.setRole(role);
+
+    // If fully authenticated and org set, jump straight to the shell for quick testing
+    if (app.isLoggedIn && app.companyId != null && app.projectId != null) {
+      final dest = switch (role) {
+        'procurement' => '/procurement-shell/dashboard',
+        'supplier' => '/supplier-shell/dashboard',
+        'warehouse' => '/warehouse-shell/dashboard',
+        _ => '/procurement-shell/dashboard',
+      };
+      context.go(dest);
+      return;
+    }
+
+    // Otherwise, keep normal flow: if logged in but missing org, go to selectors; else go to login
+    if (app.isLoggedIn) {
+      if (app.companyId == null) {
+        context.go('/org/company/select');
+      } else {
+        context.go('/org/project/select');
+      }
+    } else {
+      context.push('/auth/login');
+    }
   }
 }
 

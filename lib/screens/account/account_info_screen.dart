@@ -26,6 +26,7 @@ class AccountInfoScreen extends StatelessWidget {
     final data = context.watch<MockDataService>();
     final user = data.currentUser;
     final scheme = Theme.of(context).colorScheme;
+    final appState = context.watch<AppState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -114,6 +115,8 @@ class AccountInfoScreen extends StatelessWidget {
       ),
     );
   }
+
+  // Role switching is intentionally not exposed in Account for production parity.
 }
 
 class _DetailRow extends StatelessWidget {

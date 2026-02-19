@@ -20,17 +20,23 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MockDataService()),
         ChangeNotifierProvider(create: (_) => AppState()),
       ],
-      child: MaterialApp.router(
-        title: 'ConstructFlow',
-        debugShowCheckedModeBanner: false,
+      // IMPORTANT: Build MaterialApp and router under the Provider context
+      child: Consumer<AppState>(
+        builder: (context, appState, _) {
+          final router = AppRouter.createRouter(appState);
+          return MaterialApp.router(
+            title: 'ConstructFlow',
+            debugShowCheckedModeBanner: false,
 
-        // Theme configuration
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.system,
+            // Theme configuration
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: ThemeMode.system,
 
-        // Use context.go() or context.push() to navigate to the routes.
-        routerConfig: AppRouter.createRouter(context.read<AppState>()),
+            // Use context.go() or context.push() to navigate to the routes.
+            routerConfig: router,
+          );
+        },
       ),
     );
   }

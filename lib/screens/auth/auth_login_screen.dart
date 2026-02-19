@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:siteflow/services/app_state.dart';
+import 'package:siteflow/services/mock_data_service.dart';
+import 'package:siteflow/models/data_models.dart';
 
 class AuthLoginScreen extends StatefulWidget {
   const AuthLoginScreen({super.key});
@@ -112,7 +114,31 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _loading = true);
     try {
-      context.read<AppState>().login(email: _emailCtrl.text.trim(), password: _passwordCtrl.text, rememberMe: _remember);
+      final email = _emailCtrl.text.trim();
+      final password = _passwordCtrl.text;
+      final data = context.read<MockDataService>();
+
+      // Attempt to locate an existing mock user by email to derive role
+      User? found;
+      try {
+        found = data.users.firstWhere((u) => u.email.toLowerCase() == email.toLowerCase());
+      } catch (_) {}
+
+      if (found != null) {
+        // Validate credentials against mock store and set currentUser
+        final ok = data.loginWithEmail(email: email, password: password, role: found.role);
+        if (!ok) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
+          }
+          return;
+        }
+        // Mirror role into AppState so routing can enforce access strictly
+        context.read<AppState>().setRole(_roleName(found.role));
+      }
+
+      // Complete app login lifecycle
+      context.read<AppState>().login(email: email, password: password, rememberMe: _remember);
       if (!mounted) return;
       context.go('/org/company/select');
     } catch (e) {
@@ -120,6 +146,17 @@ class _AuthLoginScreenState extends State<AuthLoginScreen> {
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Something went wrong. Please try again.')));
     } finally {
       if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  String _roleName(UserRole role) {
+    switch (role) {
+      case UserRole.procurement:
+        return 'procurement';
+      case UserRole.supplier:
+        return 'supplier';
+      case UserRole.warehouse:
+        return 'warehouse';
     }
   }
 }

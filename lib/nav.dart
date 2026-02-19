@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:siteflow/screens/dev/role_selection_screen.dart';
 import 'package:siteflow/screens/procurement/procurement_dashboard.dart';
 import 'package:siteflow/screens/procurement/create_rfq_screen.dart';
@@ -63,6 +64,7 @@ import 'package:siteflow/screens/shared/settings_screen.dart';
 import 'package:siteflow/screens/shared/help_support_screen.dart';
 
 import 'package:siteflow/services/app_state.dart';
+import 'package:siteflow/screens/auth/unauthorized_screen.dart';
 
 class AppRouter {
   static GoRouter createRouter(AppState appState) {
@@ -79,6 +81,7 @@ class AppRouter {
         final isAuthRoute = loc.startsWith('/auth');
         final isOrgRoute = loc.startsWith('/org');
         final isDevRoute = loc.startsWith('/dev');
+        final isUnauthorized = loc == '/unauthorized';
 
         // Auth protection
         if (!appState.isLoggedIn && !isAuthRoute && !isDevRoute) {
@@ -92,6 +95,35 @@ class AppRouter {
           }
           if (appState.companyId != null && appState.projectId == null && !loc.startsWith('/org/project') && !isAuthRoute) {
             return '/org/project/select';
+          }
+        }
+
+        // Role-based shell routing after org context is ready
+        if (appState.isLoggedIn && appState.companyId != null && appState.projectId != null) {
+          final role = appState.role ?? 'procurement';
+          final dest = switch (role) {
+            'procurement' => '/procurement-shell/dashboard',
+            'supplier' => '/supplier-shell/dashboard',
+            'warehouse' => '/warehouse-shell/dashboard',
+            _ => '/procurement-shell/dashboard',
+          };
+
+          // If trying to access auth or org while fully set up, go to role dashboard
+          if (isAuthRoute || isOrgRoute || loc == '/' || loc == '/dev/role-selection') {
+            return dest;
+          }
+
+          // Strict role-based shell access: block other shells with Unauthorized screen
+          final onProcShell = loc.startsWith('/procurement-shell');
+          final onSuppShell = loc.startsWith('/supplier-shell');
+          final onWhShell = loc.startsWith('/warehouse-shell');
+          final accessingOtherShell =
+              (role == 'procurement' && (onSuppShell || onWhShell)) ||
+              (role == 'supplier' && (onProcShell || onWhShell)) ||
+              (role == 'warehouse' && (onProcShell || onSuppShell));
+
+          if (accessingOtherShell && !isUnauthorized) {
+            return '/unauthorized';
           }
         }
 
@@ -110,8 +142,12 @@ class AppRouter {
         GoRoute(path: '/auth/forgot-password', builder: (context, state) => const ForgotPasswordScreen()),
         GoRoute(path: '/auth/reset-password', builder: (context, state) => const ResetPasswordScreen()),
 
+        // Unauthorized
+        GoRoute(path: '/unauthorized', builder: (context, state) => const UnauthorizedScreen()),
+
         // Dev tools
-        GoRoute(path: '/dev/role-selection', builder: (context, state) => const RoleSelectionScreen()),
+        if (!kReleaseMode)
+          GoRoute(path: '/dev/role-selection', builder: (context, state) => const RoleSelectionScreen()),
 
         // Account
         GoRoute(path: '/account', builder: (context, state) => const AccountInfoScreen()),

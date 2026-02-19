@@ -28,6 +28,12 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Dev/testing: explicitly set current role and notify listeners.
+  void setRole(String role) {
+    _role = role;
+    notifyListeners();
+  }
+
   void logout() {
     _isLoggedIn = false;
     _companyId = null;
