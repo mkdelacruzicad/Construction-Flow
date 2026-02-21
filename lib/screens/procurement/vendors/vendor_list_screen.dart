@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class VendorListScreen extends StatelessWidget {
   const VendorListScreen({super.key});
@@ -14,11 +15,15 @@ class VendorListScreen extends StatelessWidget {
         separatorBuilder: (_, __) => const SizedBox(height: 8),
         itemBuilder: (context, i){
           final v = vendors[i];
+          final vendorId = 'v${i+1}';
           return Card(child: ListTile(
             leading: const CircleAvatar(child: Icon(Icons.store)),
             title: Text(v['name'] as String),
             subtitle: Text(v['category'] as String),
-            trailing: const Icon(Icons.chevron_right),
+            trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+              TextButton.icon(onPressed: ()=> context.push('/procurement-shell/vendors/$vendorId/scorecard'), icon: const Icon(Icons.insights), label: const Text('Scorecard')),
+              const Icon(Icons.chevron_right),
+            ]),
             onTap: (){},
           ));
         },

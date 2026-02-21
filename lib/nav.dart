@@ -40,16 +40,19 @@ import 'package:siteflow/screens/procurement/rfqs/rfq_submissions_screen.dart';
 import 'package:siteflow/screens/procurement/rfqs/submission_details_screen.dart';
 import 'package:siteflow/screens/procurement/rfqs/compare_vendors_screen.dart';
 import 'package:siteflow/screens/procurement/rfqs/award_decision_screen.dart';
+import 'package:siteflow/screens/procurement/rfqs/rfq_decision_board_screen.dart';
 import 'package:siteflow/screens/procurement/pos/po_list_screen.dart';
 import 'package:siteflow/screens/procurement/pos/po_details_screen.dart';
 import 'package:siteflow/screens/procurement/pos/create_po_from_award_screen.dart';
 import 'package:siteflow/screens/procurement/vendors/vendor_list_screen.dart';
+import 'package:siteflow/screens/procurement/vendors/vendor_scorecard_screen.dart';
 import 'package:siteflow/screens/supplier/opportunities/opportunities_screen.dart';
 import 'package:siteflow/screens/supplier/submissions/supplier_submissions_screen.dart';
 import 'package:siteflow/screens/supplier/catalog/catalog_list_screen.dart';
 import 'package:siteflow/screens/supplier/catalog/add_edit_catalog_item_screen.dart';
 import 'package:siteflow/screens/supplier/profile/supplier_profile_setup_screen.dart';
 import 'package:siteflow/screens/supplier/profile/verification_status_screen.dart';
+import 'package:siteflow/screens/supplier/profile/supplier_performance_screen.dart';
 import 'package:siteflow/screens/warehouse/select_po_to_receive_screen.dart';
 import 'package:siteflow/screens/warehouse/receive_against_po_screen.dart';
 import 'package:siteflow/screens/warehouse/grn_summary_screen.dart';
@@ -168,6 +171,7 @@ class AppRouter {
             GoRoute(path: '/procurement-shell/rfqs', builder: (context, state) => const RFQListScreen()),
             GoRoute(path: '/procurement-shell/rfq/create', builder: (context, state) => const CreateRFQScreen()),
             GoRoute(path: '/procurement-shell/rfqs/:id', builder: (context, state) => RFQDetailsProcurementScreen(rfqId: state.pathParameters['id']!)),
+            GoRoute(path: '/procurement-shell/rfqs/:id/decision-board', builder: (context, state) => RFQDecisionBoardScreen(rfqId: state.pathParameters['id']!)),
             GoRoute(path: '/procurement-shell/rfqs/:id/invite', builder: (context, state) => InviteVendorsScreen(rfqId: state.pathParameters['id']!)),
             GoRoute(path: '/procurement-shell/rfqs/:id/invite/summary', builder: (context, state) => InviteSummaryScreen(rfqId: state.pathParameters['id']!)),
             GoRoute(path: '/procurement-shell/rfqs/:id/invite/success', builder: (context, state) => InviteSuccessScreen(rfqId: state.pathParameters['id']!)),
@@ -179,6 +183,7 @@ class AppRouter {
             GoRoute(path: '/procurement-shell/pos', builder: (context, state) => const POListScreen()),
             GoRoute(path: '/procurement-shell/pos/:id', builder: (context, state) => PODetailsScreen(poId: state.pathParameters['id']!)),
             GoRoute(path: '/procurement-shell/vendors', builder: (context, state) => const VendorListScreen()),
+            GoRoute(path: '/procurement-shell/vendors/:vendorId/scorecard', builder: (context, state) => VendorScorecardScreen(vendorId: state.pathParameters['vendorId']!)),
           ],
         ),
 
@@ -197,6 +202,7 @@ class AppRouter {
             GoRoute(path: '/supplier-shell/rfq/:id/quote', builder: (context, state) => QuoteSubmissionScreen(rfqId: state.pathParameters['id']!)),
             GoRoute(path: '/supplier-shell/profile/setup', builder: (context, state) => const SupplierProfileSetupScreen()),
             GoRoute(path: '/supplier-shell/profile/verification', builder: (context, state) => const VerificationStatusScreen()),
+            GoRoute(path: '/supplier-shell/profile/performance', builder: (context, state) => const SupplierPerformanceScreen()),
           ],
         ),
 

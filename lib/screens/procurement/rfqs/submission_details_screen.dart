@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SubmissionDetailsScreen extends StatelessWidget {
   final String rfqId;
@@ -8,7 +9,9 @@ class SubmissionDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Submission - $vendorId')),
+      appBar: AppBar(title: Text('Submission - $vendorId'), actions: [
+        IconButton(onPressed: ()=> context.push('/procurement-shell/vendors/$vendorId/scorecard'), icon: const Icon(Icons.insights)),
+      ]),
       body: ListView(padding: const EdgeInsets.all(12), children: const [
         _Section(title: 'Quote summary'),
         SizedBox(height: 8),

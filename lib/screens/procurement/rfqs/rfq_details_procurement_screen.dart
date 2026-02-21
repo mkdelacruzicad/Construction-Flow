@@ -13,6 +13,7 @@ class RFQDetailsProcurementScreen extends StatelessWidget {
         IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/invite'), icon: const Icon(Icons.group_add)),
         IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/submissions'), icon: const Icon(Icons.inbox)),
         IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/compare'), icon: const Icon(Icons.table_chart)),
+        IconButton(onPressed: ()=> context.push('/procurement-shell/rfqs/$rfqId/decision-board'), icon: const Icon(Icons.insights)),
       ]),
       body: ListView(
         padding: const EdgeInsets.all(16),
